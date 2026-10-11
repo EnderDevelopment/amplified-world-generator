@@ -1,0 +1,60 @@
+plugins {
+    id 'net.minecraftforge.gradle' version '5.1.+'
+    id 'maven-publish'
+}
+
+group = 'com.guddu1580'
+version = '1.0'
+archivesBaseName = 'amplifiedworldmod'
+
+repositories {
+    mavenCentral()
+    maven {
+        url = 'https://files.minecraftforge.net/maven'
+    }
+}
+
+ext.minecraft {
+    mappings channel: 'official', version: '1.18.2'
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+        }
+        server {
+            workingDirectory project.file('run')
+        }
+        data {
+            workingDirectory project.file('run')
+            main = 'net.minecraft.data.Main'
+            property 'forge.logging.markers', 'DATAGEN'
+        }
+    }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.18.2-40.1.0'
+    minecraft 'net.minecraft:server:1.18.2'
+    minecraft 'net.minecraft:client:1.18.2'
+    minecraft 'net.minecraft:common:1.18.2'
+    minecraft 'net.minecraft:game:1.18.2'
+    minecraft 'net.minecraft:data:1.18.2'
+    minecraft 'net.minecraft:server:1.18.2'
+    minecraft 'net.minecraft:client:1.18.2'
+    minecraft 'net.minecraft:common:1.18.2'
+    minecraft 'net.minecraft:game:1.18.2'
+    minecraft 'net.minecraft:data:1.18.2'
+}
+
+processResources {
+    inputs.property 'version', project.version
+    inputs.property 'mcversion', project.ext.minecraft_version
+}
+
+jar {
+    from {
+        configurations.compileClasspath.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}

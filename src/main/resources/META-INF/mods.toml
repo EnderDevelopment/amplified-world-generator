@@ -1,0 +1,23 @@
+[[mods]]
+modId = "amplifiedworldmod"
+version = "${file.jarVersion}"
+displayName = "Amplified World Mod"
+credits = "guddu1580"
+authors = "guddu1580"
+description = '''
+A mod that changes the world generation to make the generation amplified just like Java Edition.
+'''
+
+[[dependencies.amplifiedworldmod]]
+modId = "forge"
+mandatory = true
+versionRange = "[40,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.amplifiedworldmod]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.18.2,1.19)"
+ordering = "NONE"
+side = "BOTH"
